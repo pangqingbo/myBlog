@@ -4,7 +4,6 @@ module.exports = {
   title: '飞鸟的博客',
   description: '让终身学习成为习惯',
   head: [['link', { rel: 'icon', href: '/images/astronaut.png' }]],
-  base: '/myBlog/',
   themeConfig: {
     docsDir: "docs",
     logo: '/images/astronaut.png',
