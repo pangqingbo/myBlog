@@ -1,0 +1,17 @@
+# filter diary folder
+/diary
+docs/.vuepress/dist
+
+/node_modules
+package-lock.json
+
+.vscode/launch.json
+
+
+#test
+docs/test.txt
+docs/.vuepress/test.txt
+/npm-debug.log
+node_modules
+.temp
+.cache

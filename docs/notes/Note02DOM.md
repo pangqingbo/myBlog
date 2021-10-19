@@ -1,0 +1,111 @@
+# DOM
+## DOM
+### DOM简介
+DOM，全称叫做Document Object Model文档对象模型，DOM将HTML文档描绘成一个多层节点的树状结构
+### DOM节点
+- DOM常用节点分为四类：
+	- 文档节点：整个HTML文档
+	- 元素节点：HTML文档中的HTML标签，如p标签、div标签、span标签等
+	- 属性节点：元素的属性，如name、id、class等
+	- 文本节点：HTML标签中的文本内容
+- DOM节点的属性 
+	- nodeName:元素节点的nodeName为标签名，属性节点的nodeName为属性名
+	- nodeType：文档节点的nodeType为9，元素节点、属性节点、文本节点的nodeType分别为1、2、3
+	- nodeValue：属性节点的nodeValue为属性值，文本节点的nodeValue为文本内容	
+### DOM获取节点
+- 获取元素节点
+	- 通过document调用
+		1. getElementById():通过id属性获取元素节点对象
+		2. getElementsByTagName()：通过标签名获取一组元素节点对象
+		3. getElementsByName()：通过name属性获取一组元素节点对象
+- 获取元素节点的子节点
+	- 通过具体的元素节点调用
+		1. getElementsByTagName()
+		2. childNodes：获取当前节点的所有子节点
+		3. firstChild：获取当前节点的第一个子节点
+		4. lastChild：获取当前节点的最后一个子节点
+		5. children：可以获取当前元素的所有子元素节点
+		6. firstElementChild：获取当前元素的第一个子元素，不兼容IE8及以下浏览器
+		7. lastElementChild：获取当前元素的最后一个子元素，同样不兼容IE8及以下浏览器
+- 获取父节点和兄弟节点
+	- 通过具体的节点调用
+		1. parentNode：获取当前节点的父节点
+		2. previousSibling：获取当前节点的前一个兄弟节点
+		3. nextSibling：获取当前节点的下一个兄弟节点
+		4. previousElementSibling：获取当前节点的前一个兄弟元素节点，IE8及以下不支持
+		5. nextElementSibling：获取当前节点的下一个兄弟元素节点，IE8及以下不支持
+- 其他DOM查询的属性、方法
+	1. document.body：它保存的是body的引用
+	2. document.documentElement：保存的是html根标签
+	3. document.all：代表页面中的所有元素
+	4. document.getElementsByClassName:根据元素的类名获取一组元素节点对象，IE8及以下不支持
+	5. document.querySelector()：可以根据CSS选择器来查询一个元素节点对象，需要一个选择器的字符串作为参数如：.box,#box1
+	6. documen.querrySelectorAll()：用法与querySelector()类似，不同的是它会将符合条件的所有元素封装到一个数组中返回
+### 元素节点的属性
+1. element.value：能够读写元素的value属性值
+2. element.id：读写元素的id值
+3. element.className：读写元素的类名
+4. innerHTML：元素节点可以通过该属性获取和设置标签内部的html代码
+5. innerText：返回元素内部包含的文本内容，可写属性
+6. 如果需要读取元素节点的属性，我们一般直接使用：元素.属性名
+7. 注：8~18都是只读属性
+8. element.clienHeight：获取元素的可见高度，返回值不带px，可见高度包括内容区和内边距
+9. element.clienWidth：获取元素的可见宽度
+10. element.offsetHeight：获取元素的整个高度，包括内容区、内边距和边框
+11. element.offsetWidth：获取元素的整个宽度
+12. element.offsetParent：获取离当前元素最近的开启了定位的祖先元素，如果没有祖先元素开启定位，则返回body
+13. element.offsetLeft：获取当前元素相对于其定位父元素的水平偏移量
+14. element.offsetTop：获取当前元素相对于其定位父元素的垂直偏移量
+15. element.scrollWidth：可以获取当前元素整个滚动区域的宽度
+16. element.scrollHeight：可以获取当前元素整个滚动区域的高度
+17. elemen.scrollLeft：获取水平滚动条滚动的距离
+18. elemen.scrollTop：获取垂直滚动条滚动的距离
+19. 当满足scrollHeight - scrollTop == clientHeight，则垂直滚动条到底了
+### DOM操作CSS
+- 修改元素的样式
+	- 语法：元素.style.样式名 = 样式值（字符串）
+	- 注意：
+		1. 如果CSS样式名中含有-，则需要将样式名改为驼峰命名法
+		2. 通过style属性读取和设置的样式都是内联样式，内联样式会有较高的优先级
+- 读取元素的样式（只读）
+	- 元素.currentstyle.样式名
+		- 可以用它来获取当前元素正在显示的样式
+		- currentstyle只有IE支持，其他浏览器不支持
+	- getComputedStyle()方法
+		- 这个方法是window的方法
+		- 需要传递两个参数：
+			1. 参数1，要获取样式的元素
+			2. 参数2，可以传递一个伪元素，但一般都传null
+		- 该方法不支持IE8及以下浏览器
+### 常用事件
+1. onclick:事件在鼠标单击的时发生
+2. ondbclick：事件在鼠标双击的时发生
+3. onmousemove：当鼠标在元素上移动时发生
+4. onmousedown：事件在鼠标按下时发生
+5. onmouseup：事件在鼠标释放时发生
+6. onscroll：事件在滚动条滚动时触发
+### DOM增删改
+1. document.createElement()：用于创建一个元素节点对象，需要一个标签名的字符串作为参数
+2. document.createTextNode()：用于创建一个文本节点对象，需要文本内容的字符串作为参数
+3. appendChild()：向一个父节点的末尾添加一个子节点，用法：父节点.appendChild(子节点)
+4. insertBfore()：可以在指定的子节点前插入新的子节点，用法：父节点.insertBefore(新节点，旧节点)
+5. replaceChild：可以使用指定的字节的替换已有的子节点，用法：父节点.replaceChild(新节点，旧节点)
+6. removeChild：可以删除一个子节点，用法：父节点.removeChild(子节点)
+### 事件的冒泡和捕获
+- 事件的捕获：假设我们给某一个元素及其祖先元素绑定同一事件，当事件触发时，先触发当前元素最外层的祖先元素的事件，然后向内传播最后触发当前元素的事件的现象称为事件的捕获
+- 事件的冒泡：假设我们给某一个元素及其祖先元素绑定同一事件，当事件触发时，先触发当前元素的事件，然后向外传播最后触发当前元素的祖先元素的事件的现象称为事件的冒泡
+### 事件的委托
+- addEventListener()：可以为元素绑定响应函数，不支持IE8及以下浏览器
+	- 参数：
+		1. 第一个参数，事件的字符串，不要on
+		2. 第二个参数，回调函数，事件触发时该函数会被调用
+		3. 第三个参数，是否在捕获阶段触发事件，需要一个布尔值，一般传false
+- attachEvent()：在IE8中用来绑定事件
+	- 参数：
+		1. 第一个参数，事件的字符串，要on
+		2. 第二个参数，回调函数
+## 事件对象
+当事件的响应函数被触发时，浏览器每次都会将一个事件对象作为实参传递进响应函数,在事件对象中封装了当前事件相关的一切信息，比如：鼠标的坐标  键盘哪个按键被按下  鼠标滚轮滚动的方向。。。   
+### 事件对象的属性
+- clientX：可以获取鼠标指针的水平坐标(根据客户端区域)
+- clientY：可以获取鼠标指针的垂直坐标(根据客户端区域)
