@@ -27,23 +27,23 @@
 ## 变量的解构赋值
 ### 数组的解构赋值
 - 示例：
-```
- let [head, ...tail] = [1, 2, 3, 4];  
- head // 1  
- tail // [2, 3, 4]   
- 如果解构不成功，变量的值就等于undefined  
- let [foo] = [];  
- let [bar, foo] = [1];   
- 以上两种情况都属于解构不成功，foo的值都会等于undefined  
- 如果等号的右边不是数组（或者严格地说，不是可遍历的(iterator)结构),那 么将会报错,如下：   
- // 报错  
- let [foo] = 1;  
- let [foo] = false;    
- let [foo] = {};  
-```
+	```javascript
+	 let [head, ...tail] = [1, 2, 3, 4];  
+	 head // 1  
+	 tail // [2, 3, 4]   
+	 如果解构不成功，变量的值就等于undefined  
+	 let [foo] = [];  
+	 let [bar, foo] = [1];   
+	 以上两种情况都属于解构不成功，foo的值都会等于undefined  
+	 如果等号的右边不是数组（或者严格地说，不是可遍历的(iterator)结构),那 么将会报错,如下：   
+	 // 报错  
+	 let [foo] = 1;  
+	 let [foo] = false;    
+	 let [foo] = {};  
+	```
 - 默认值
 	- ES6 内部使用严格相等运算符（===），判断一个位置是否有值。所以，只有当一个数组成员严格等于undefined，默认值才会生效
-		```
+		```javascript
 		示例：	
 		 let [x = 1] = [undefined]; // x=1   
 		 let [x = 1] = [null]; // x=null
@@ -53,14 +53,15 @@
 
 ### 对象的解构赋值
 - 对象的属性没有次序，变量必须与属性同名，才能取到正确的值
-	```
+	```javascript
 	let { bar, foo } = { foo: 'aaa', bar: 'bbb' }; //foo="aaa"; bar="bbb"  
 	let { baz } = { foo: 'aaa', bar: 'bbb' }; // baz=undefined  
 	```
+
 - 如果解构失败，变量的值等于undefined
 - 解构可以用于嵌套赋值
 
-	``` 
+	``` javascript
 	let obj = {
 	  p: [
 	    'Hello',
@@ -71,8 +72,9 @@
 	x // "Hello"
 	y // "World"
 	```
+
 - 对象的解构也可以指定默认值,默认值生效的条件是，对象的属性值严格等于undefined
-	```
+	```javascript
 	var {x = 3} = {x: undefined};
 	x // 3
 	
@@ -81,7 +83,7 @@
 	```
 
 ### 字符串的解构赋值
-```   
+```javascript
 const [a, b, c, d, e] = 'hello';  
 a // "h"  
 b // "e"   
@@ -98,7 +100,7 @@ len // 5
 
 ### 函数参数的解构赋值
 - 函数的参数也可以使用解构赋值
-	```
+	```javascript
 	function add([x, y]){
 	  return x + y;
 	}
@@ -108,8 +110,9 @@ len // 5
 	[[1, 2], [3, 4]].map(([a, b]) => a + b);
 	// [ 3, 7 ]
 	```
+
 - 函数参数的解构也可以使用默认值,undefined就会触发参数的默认值
-	```
+	```javascript
 	function move({x = 0, y = 0} = {}) {
 	  return [x, y];
 	}
@@ -125,7 +128,7 @@ len // 5
 	2. 函数参数	
 	3. 赋值语句的模式
 - 可以使用圆括号的情况只有一种：赋值语句的非模式部分，可以使用圆括号
-	```
+	```javascript
 	[(b)] = [3]; // 正确
 	({ p: (d) } = {}); // 正确
 	[(parseInt.prop)] = [3]; // 正确
@@ -133,13 +136,14 @@ len // 5
 
 ### 变量的解构赋值的用途
 - 交换变量的值
-	```
+	```javascript
 	let x = 1;
 	let y = 2;
 	[x, y] = [y, x];
 	```
+
 - 从函数返回多个值
-	```
+	```javascript
 	// 返回一个数组
 	function example() {
 	  return [1, 2, 3];
@@ -154,8 +158,9 @@ len // 5
 	}
 	let { foo, bar } = example();
 	```
+
 - 函数参数的定义
-	```
+	```javascript
 	// 参数是一组有次序的值
 	function f([x, y, z]) { ... }
 	f([1, 2, 3]);
@@ -163,8 +168,9 @@ len // 5
 	function f({x, y, z}) { ... }
 	f({z: 3, y: 2, x: 1});
 	```
+
 - 指定函数参数的默认值
-	指定参数的默认值，就避免了在函数体内部再写var foo = config.foo || 'default foo';这样的语句
+指定参数的默认值，就避免了在函数体内部再写var foo = config.foo || 'default foo';这样的语句
 
 ### 知识点
 **一般引用类型（对象，数组）如果不需要按地址赋值的话，拷贝一份再赋值就可以了，对象一般用Object.assign拷贝，数组用[].concat()拷贝**

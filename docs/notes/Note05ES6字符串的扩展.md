@@ -2,18 +2,20 @@
 ## 字符串的扩展
 ### 模板字符串
 - 模板字符串用反引号（`）标识
-	```
+	```javascript
 	// 多行字符串
 	`In JavaScript this is
 	 not legal.`
 	```
+
 - 模板字符串中嵌入变量，需要将变量名写在${}之中，大括号内部可以放入任意的 JavaScript 表达式，可以进行运算，以及引用对象属性
-	```
+	```javascript
 	let name = "Bob", time = "today";
 	`Hello ${name}, how are you ${time}?`
 	```
+
 - 模板字符串之中还能调用函数
-	```
+	```javascript
 	function fn() {
 	  return "Hello World";
 	}
@@ -21,19 +23,24 @@
 	`foo ${fn()} bar`
 	// foo Hello World bar
 	```
+
 - 如果在模板字符串中需要使用反引号，则前面要用反斜杠转义
-	```let greeting = `\`Yo\` World!`;```
+	```javascript
+	let greeting = `\`Yo\` World!`;
+	```
+
 - 如果模板字符串中的变量没有声明，将报错
 
 ### 标签模板
 - 标签模板其实是函数调用的一种特殊形式。“标签”指的就是函数，紧跟在后面的模板字符串就是它的参数
-	```
+	```javascript
 	alert`hello`
 	// 等同于
 	alert(['hello'])
 	```
+
 - 如果模板字符里面有变量，会将模板字符串先处理成多个参数，再调用函数
-	```
+	```javascript
 	let a = 5;
 	let b = 10;
 	tag`Hello ${ a + b } world ${ a * b }`;
@@ -47,7 +54,7 @@
 - 参数：需要转换的字符的Unicode编码
 - ES5 提供String.fromCharCode()方法，用于从 Unicode 码点返回对应字符，但是这个方法不能识别码点大于0xFFFF的字符，而ES6提供的String.fromCodePoint()方法可以识别大于0xFFFF的字符
 - 示例：
-	```
+	```javascript
 	String.fromCodePoint(0x20BB7)
 	// "𠮷"
 	```
@@ -58,20 +65,21 @@
 
 ### 实例方法：codePointAt()
 - codePointAt()方法，能够正确处理 4 个字节储存的字符，返回一个字符的十进制码点,但也不能完美的返回，如下
-	```
+	```javascript
 	let s = '𠮷a';
 	s.codePointAt(0) // 134071
 	s.codePointAt(1) // 57271
 	s.codePointAt(2) // 97
 	```
-	```
+	```javascript
 	var s = "𠮷";
 	s.charCodeAt(0) // 55362
 	s.charCodeAt(1) // 57271
 	```
+
 - 为了解决codePointAt的缺陷，有两种办法：
 	1. 使用for...of循环，因为它会正确识别 32 位的 UTF-16 字符
-	```
+	```javascript
 	let s = '𠮷a';
 	for (let ch of s) {
 	  console.log(ch.codePointAt(0).toString(16));
@@ -79,8 +87,9 @@
 	// 20bb7
 	// 61
 	```
+
 	2. 使用扩展运算符（...）
-	```
+	```javascript
 	let arr = [...'𠮷a']; // arr.length === 2
 	arr.forEach(
 	  ch => console.log(ch.codePointAt(0).toString(16))
@@ -92,7 +101,7 @@
 ### 实例方法：normalize() 
 - normalize()用来将字符的不同表示方法统一为同样的形式，这称为 Unicode 正规化
 - normalize方法目前不能识别三个或三个以上字符的合成
-	```
+	```javascript
 	'\u01D1'==='\u004F\u030C' //false
 	'\u01D1'.normalize() === '\u004F\u030C'.normalize() // true
 	```
@@ -105,7 +114,7 @@
 - endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部
 - 这三个方法都支持第二个参数，表示开始搜索的位置
 - 示例：
-	```
+	```javascript
 	let s = 'Hello world!';
 	s.startsWith('world', 6) // true
 	s.endsWith('Hello', 5) // true
@@ -121,7 +130,7 @@
 - 参数NaN等同于 0
 - 如果repeat的参数是字符串，则会先转换成数字
 - 示例：
-	```
+	```javascript
 	'x'.repeat(3) // "xxx"
 	'na'.repeat(2.9) // "nana"
 	'na'.repeat(Infinity) // RangeError
@@ -135,7 +144,7 @@
 - padStart()和padEnd()一共接受两个参数，第一个参数是字符串补全生效的最大长度，第二个参数是用来补全的字符串
 - 如果省略第二个参数，默认使用空格补全长度
 - 示例：
-	```
+	```javascript
 	'x'.padStart(5, 'ab') // 'ababx'
 	'x'.padStart(4, 'ab') // 'abax'
 
@@ -148,7 +157,7 @@
 - 它们返回的都是新字符串，不会修改原始字符串
 - trimLeft()是trimStart()的别名，trimRight()是trimEnd()的别名
 - 示例：
-	```
+	```javascript
 	const s = '  abc  ';
 	s.trim() // "abc"
 	s.trimStart() // "abc  "
@@ -168,7 +177,7 @@
 	3. $'：匹配结果后面的文本。
 	4. $n：匹配成功的第n组内容，n是从1开始的自然数。这个参数生效的前提是，第一个参数必须是正则表达式。
 	5. $$：指代美元符号$。
-	```
+	```javascript
 	// $& 表示匹配的字符串，即`b`本身
 	// 所以返回结果与原字符串一致
 	'abbc'.replaceAll('b', '$&')
@@ -191,8 +200,9 @@
 	'abc'.replaceAll('b', '$$')
 	// 'a$c'
 	```
+
 - replaceAll()的第二个参数可以是函数，该函数的返回值将替换掉第一个参数匹配的文本
-	```
+	```javascript
 	'aabbcc'.replaceAll('b', () => '_')
 	// 'aa__cc'
 	```
