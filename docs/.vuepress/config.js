@@ -20,6 +20,8 @@ module.exports = {
           },
           // 字符串 - 页面文件路径
           // '/notes/Note01Markdown基本语法.md',
+          '/notes/浏览器的回流与重绘.md',
+          '/notes/JS数据类型及类型转换.md',
           '/notes/Note02DOM.md',
           '/notes/Note03ES6数组的方法.md',
           '/notes/Note04ES6let和const&变量的解构赋值.md',
