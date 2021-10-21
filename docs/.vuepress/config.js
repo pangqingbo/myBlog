@@ -27,7 +27,7 @@ module.exports = {
           '/notes/什么是闭包？我们为什么需要闭包？.md',
           '/notes/作用域.md',
           '/notes/JS变量提升和函数提升.md',
-          '/notes/原型.md',
+          '/notes/JS原型.md',
           '/notes/Note03ES6数组的方法.md',
           '/notes/Note04ES6let和const&变量的解构赋值.md',
           '/notes/Note05ES6字符串的扩展.md',
