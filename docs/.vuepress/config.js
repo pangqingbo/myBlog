@@ -22,7 +22,12 @@ module.exports = {
           // '/notes/Note01Markdown基本语法.md',
           '/notes/浏览器的回流与重绘.md',
           '/notes/JS数据类型及类型转换.md',
-          '/notes/Note02DOM.md',
+          '/notes/JS数据类型及类型转换.md',
+          '/notes/this.md',
+          '/notes/什么是闭包？我们为什么需要闭包？.md',
+          '/notes/作用域.md',
+          '/notes/JS变量提升和函数提升.md',
+          '/notes/原型.md',
           '/notes/Note03ES6数组的方法.md',
           '/notes/Note04ES6let和const&变量的解构赋值.md',
           '/notes/Note05ES6字符串的扩展.md',
@@ -33,7 +38,6 @@ module.exports = {
           '/notes/Note06Vue指令.md',
           '/notes/Note11nmp命令.md',
           '/notes/vim操作文件.md',
-          '/notes/什么是闭包？我们为什么需要闭包？.md',
           '/notes/回调地狱.md'
         ],
       }
