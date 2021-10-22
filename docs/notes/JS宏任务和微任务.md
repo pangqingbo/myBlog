@@ -31,7 +31,7 @@ setTimeout(getList,5000)
 - 然后继续循环执行需要执行的宏任务...
 
 用一张图来讲解就是：
-<img src='https://mmbiz.qpic.cn/sz_mmbiz_png/3GPT1CHiaSVtNGe3rntKbRNxAejUClPiaSFoGGa5Y7GdL7olAg20DRiaY3dia3spw2Ze7Y4RAeFuwyCGDP1V3zLibzg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1'/>
+<img src="https://i.loli.net/2021/10/22/p1KBzQPUcI9yf3q.png" >
 
 ## 看个栗子
 ```javascript
