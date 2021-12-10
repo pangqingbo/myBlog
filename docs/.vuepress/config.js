@@ -21,6 +21,7 @@ module.exports = {
           // 字符串 - 页面文件路径
           // '/notes/Note01Markdown基本语法.md',
           '/notes/浏览器的回流与重绘.md',
+          '/notes/CSS过渡、动画与变形.md',
           '/notes/Note02DOM.md',
           '/notes/JS数据类型及类型转换.md',
           '/notes/this.md',
