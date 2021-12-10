@@ -64,7 +64,9 @@
     - both 结合了forwards 和 backwards
 
 ## CSS变形
-CSS 变形（transforms）允许您移动、旋转、缩放和倾斜元素
+- CSS 变形（transforms）允许您移动、旋转、缩放和倾斜元素
+- **变形不会影响到页面的布局**
+
 ### 平移
 - 格式：
 	```css
